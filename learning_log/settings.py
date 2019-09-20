@@ -1,3 +1,4 @@
+# -*- coding:utf-8 -*-
 """
 Django settings for learning_log project.
 
@@ -37,6 +38,10 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    #第三方的应用程序
+    'bootstrap3',
+
     'learning_logs',
 	'users',
 )
@@ -103,3 +108,9 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 LOGIN_URL = '/users/login/'
+
+#django-bootstrap3的设置
+BOOTSTRAP3 = {
+    #这是一个javascript库
+    'include_jquery':True,
+}
