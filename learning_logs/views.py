@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect,Http404
 from django.core.urlresolvers import reverse
 from .models import Topic, Entry
 from .forms import TopicForm, EntryForm
@@ -11,7 +11,9 @@ def index(request):
 
 @login_required
 def topics(request):
-    topics = Topic.objects.order_by('data_added')
+    topics = Topic.objects.filter(owner=request.user).order_by('data_added')
+    if topic.owner != request.user:
+        raise Http404
     context = {'topics':topics}
     return render(request, 'learning_logs/topics.html', context)
 
@@ -29,7 +31,9 @@ def new_topic(request):
     else:
         form = TopicForm(request.POST)
         if form.is_valid():
-            form.save()
+            new_topic = form.save(commit=False)
+            new_topic.owner = request.user
+            new_topic.save()
             return HttpResponseRedirect(reverse('learning_logs:topics'))
 
     context = {'form':form}
@@ -56,6 +60,8 @@ def new_entry(request, topic_id):
 def edit_entry(request, entry_id):
     entry = Entry.objects.get(id=entry_id)
     topic = entry.topic
+    if topic.owner != request.user:
+        raise Http404
 
     if request.method != 'POST':
         form = EntryForm(instance=entry)
