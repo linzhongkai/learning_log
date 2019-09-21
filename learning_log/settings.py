@@ -25,8 +25,8 @@ SECRET_KEY = 'am5zz3lbdk%0#e0b44)+g#^#6h!%%^%zr@wix^0le+y&5*pr1c'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
-ALLOWED_HOSTS = []
+#显示错误调试信息
+ALLOWED_HOSTS = ['localhost']
 
 
 # Application definition
@@ -62,7 +62,8 @@ ROOT_URLCONF = 'learning_log.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        #dirs 让django在根模板查找错误页面错误
+        'DIRS': [os.path.join(BASE_DIR, 'learning_log/templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
