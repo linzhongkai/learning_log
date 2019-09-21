@@ -1,0 +1,16 @@
+{% extends "learning_logs/base.html" %}
+{% load bootstrap3 %}
+
+{%block header%}
+<h2>
+  delete success
+</h2>
+{% endblock header %}
+
+{% block content %}
+
+  <form acation="{% url 'learning_logs:topic' topic.id%}" method='post' class="form">
+    {% csrf_token %}
+
+  </form>
+{% endblock content %}

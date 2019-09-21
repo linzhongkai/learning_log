@@ -15,4 +15,3 @@ class EntryForm(forms.ModelForm):
         fields = ['text']
         labels = {'text': ''}
         widghts = {'text':forms.Textarea(attrs={'cols':80})}
-
