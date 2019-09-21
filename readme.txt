@@ -7,3 +7,12 @@ Successfully installed django-bootstrap3-11.1.0
 Successfully installed dj-database-url-0.5.0
 Successfully installed dj-static-0.0.6 static3-0.7.0
 Successfully installed gunicorn-19.9.0
+
+建立在线数据库
+先进行数据库迁移
+heroku run python manage.py migrate
+改进heroku的部署
+创建超级用户
+python manage.py createsuperuser
+在heroku上创建用户友好的url
+heroku app:rename learning_log
