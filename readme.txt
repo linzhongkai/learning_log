@@ -16,3 +16,8 @@ heroku run python manage.py migrate
 python manage.py createsuperuser
 在heroku上创建用户友好的url
 heroku app:rename learning_log
+提交推送
+git commmit -am "something"
+git status
+git push heroku master
+此时不会重建数据库，所以不用进行数据库的迁移
