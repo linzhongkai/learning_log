@@ -21,3 +21,4 @@ git commmit -am "something"
 git status
 git push heroku master
 此时不会重建数据库，所以不用进行数据库的迁移
+add delete entry
